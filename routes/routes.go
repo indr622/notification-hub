@@ -40,4 +40,14 @@ func RegisterRoutes(r *gin.Engine) {
 		groups.PUT("/:id", groupHandler.Update)
 		groups.DELETE("/:id", groupHandler.Delete)
 	}
+
+	// Contact
+	contactHandler := handlers.NewContactHandler(config.DB)
+	r.POST("/contacts", contactHandler.Create)
+	r.GET("/contacts", contactHandler.List)
+
+	// Contact Group
+	contactGroupHandler := handlers.NewContactGroupHandler(config.DB)
+	r.POST("/contact-groups", contactGroupHandler.Create)
+	r.GET("/contact-groups", contactGroupHandler.List)
 }

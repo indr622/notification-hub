@@ -19,6 +19,7 @@ func main() {
 	config.InitDB()
 
 	r := gin.Default()
+	r.SetTrustedProxies([]string{})
 
 	// Register all routes
 	routes.RegisterRoutes(r)

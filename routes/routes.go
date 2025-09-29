@@ -29,4 +29,15 @@ func RegisterRoutes(r *gin.Engine) {
 		templates.PUT("/:id", emailTemplateHandler.Update)
 		templates.DELETE("/:id", emailTemplateHandler.Delete)
 	}
+
+	// Group routes
+	groupHandler := handlers.NewGroupHandler(config.DB)
+	groups := r.Group("/groups")
+	{
+		groups.POST("", groupHandler.Create)
+		groups.GET("", groupHandler.List)
+		groups.GET("/:id", groupHandler.Get)
+		groups.PUT("/:id", groupHandler.Update)
+		groups.DELETE("/:id", groupHandler.Delete)
+	}
 }

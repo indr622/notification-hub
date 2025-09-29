@@ -36,6 +36,8 @@ func InitDB() {
 		&models.NotificationContext{},
 		&models.EmailTemplate{},
 		&models.Group{},
+		&models.Contact{},
+		&models.ContactGroup{},
 	)
 	if err != nil {
 		log.Fatal("Failed to migrate database:", err)

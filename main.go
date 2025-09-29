@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 	"notification-hub/config"
-	"notification-hub/handlers"
+	"notification-hub/routes"
 	"os"
 
 	"github.com/gin-gonic/gin"
@@ -20,15 +20,8 @@ func main() {
 
 	r := gin.Default()
 
-	// Initialize handlers
-	contextHandler := handlers.NewContextHandler(config.DB)
-
-	// Define routes
-	r.POST("/contexts", contextHandler.Create)
-	r.GET("/contexts", contextHandler.List)
-	r.GET("/contexts/:id", contextHandler.Get)
-	r.PUT("/contexts/:id", contextHandler.Update)
-	r.DELETE("/contexts/:id", contextHandler.Delete)
+	// Register all routes
+	routes.RegisterRoutes(r)
 
 	port := os.Getenv("APP_PORT")
 	if port == "" {

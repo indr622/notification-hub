@@ -34,6 +34,7 @@ func InitDB() {
 	// Migrate models
 	err = DB.AutoMigrate(
 		&models.NotificationContext{},
+		&models.EmailTemplate{},
 	)
 	if err != nil {
 		log.Fatal("Failed to migrate database:", err)
